@@ -33,7 +33,7 @@ for _, clay in pairs(clay) do
 		description = clay[2] .. " Baked Clay",
 		tiles = {"baked_clay_" .. clay[1] ..".png"},
 		groups = {cracky = 3, bakedclay = 1},
-		sounds = default.node_sound_stone_defaults()
+		sounds = stone.sounds
 	})
 
 	-- craft recipe
@@ -58,7 +58,7 @@ for _, clay in pairs(clay) do
 			description = clay[2] .. " Baked Clay",
 			tiles = {"baked_clay_" .. clay[1] .. ".png"},
 			groups = {cracky = 3},
-			sounds = default.node_sound_stone_defaults()
+			sounds = stone.sounds
 		})
 
 		stairsplus:register_alias_all("bakedclay", clay[1],
@@ -77,7 +77,7 @@ for _, clay in pairs(clay) do
 			{cracky = 3},
 			{"baked_clay_" .. clay[1] .. ".png"},
 			clay[2] .. " Baked Clay",
-			default.node_sound_stone_defaults())
+			stone.sounds)
 
 	-- default stairs
 	elseif stairs_mod then
@@ -87,7 +87,7 @@ for _, clay in pairs(clay) do
 			{"baked_clay_" .. clay[1] .. ".png"},
 			clay[2] .. " Baked Clay Stair",
 			clay[2] .. " Baked Clay Slab",
-			default.node_sound_stone_defaults())
+			stone.sounds)
 	end
 
 	-- register bakedclay for use in technic_cnc mod
@@ -119,7 +119,7 @@ for _, clay in pairs(clay) do
 			},
 			paramtype2 = "facedir",
 			groups = {cracky = 3, terracotta = 1},
-			sounds = default.node_sound_stone_defaults(),
+			sounds = stone.sounds,
 			on_place = minetest.rotate_node
 		})
 
@@ -138,7 +138,7 @@ minetest.register_alias("bakedclay:terracotta_light_blue", "bakedclay:terracotta
 minetest.register_craft({
 	type = "cooking",
 	output = "bakedclay:natural",
-	recipe = "default:clay",
+	recipe = "clay:clay",
 })
 
 -- register a few extra dye colour options
@@ -152,13 +152,13 @@ minetest.register_craft( {
 minetest.register_craft( {
 	type = "shapeless",
 	output = "dye:green 4",
-	recipe = {"default:cactus"}
+	recipe = {"cactus:cactus"}
 })
 
 minetest.register_craft( {
 	type = "shapeless",
 	output = "dye:brown 4",
-	recipe = {"default:dry_shrub"}
+	recipe = {"shrub:dry"}
 })
 
 -- only add light grey recipe if unifieddye mod isnt present (conflict)
@@ -173,7 +173,7 @@ end
 
 -- 2x2 red baked clay makes 16x clay brick
 minetest.register_craft( {
-	output = "default:clay_brick 16",
+	output = "clay:brick 16",
 	recipe = {
 		{"bakedclay:red", "bakedclay:red"},
 		{"bakedclay:red", "bakedclay:red"},
@@ -203,7 +203,7 @@ local function add_simple_flower(name, desc, box, f_groups)
 		buildable_to = true,
 		stack_max = 99,
 		groups = f_groups,
-		sounds = default.node_sound_leaves_defaults(),
+		sounds = grass.sounds,
 		selection_box = {
 			type = "fixed",
 			fixed = box
@@ -233,7 +233,7 @@ end
 
 minetest.register_decoration({
 	deco_type = "simple",
-	place_on = {"default:dirt_with_grass"},
+	place_on = {"dirt:grass"},
 	sidelen = 16,
 	noise_params = {
 		offset = 0,
@@ -250,7 +250,7 @@ minetest.register_decoration({
 
 minetest.register_decoration({
 	deco_type = "simple",
-	place_on = {"default:dirt_with_grass", "default:dirt_with_dry_grass"},
+	place_on = {"dirt:grass", "dirt:grass_dry"},
 	sidelen = 16,
 	noise_params = {
 		offset = 0,
@@ -267,7 +267,7 @@ minetest.register_decoration({
 
 minetest.register_decoration({
 	deco_type = "simple",
-	place_on = {"default:dirt_with_grass", "default:dirt_with_rainforest_litter"},
+	place_on = {"dirt:grass", "dirt:litter"},
 	sidelen = 16,
 	noise_params = {
 		offset = 0,
@@ -280,13 +280,13 @@ minetest.register_decoration({
 	y_min = 1,
 	y_max = 90,
 	decoration = "bakedclay:lazarus",
-	spawn_by = "default:jungletree",
+	spawn_by = "jungle:tree",
 	num_spawn_by = 1
 })
 
 minetest.register_decoration({
 	deco_type = "simple",
-	place_on = {"default:dirt_with_grass", "default:sand"},
+	place_on = {"dirt:grass", "sand:sand"},
 	sidelen = 16,
 	noise_params = {
 		offset = 0,
@@ -324,7 +324,7 @@ lucky_block:add_blocks({
 	{"flo", 5, {p.."natural", p.."black", p.."blue", p.."brown", p.."cyan",
 		p.."dark_green", p.."dark_grey", p.."green", p.."grey", p.."magenta",
 		p.."orange", p.."pink", p.."red", p.."violet", p.."white", p.."yellow"}, 2},
-	{"nod", "default:chest", 0, {
+	{"nod", "chest:chest", 0, {
 		{name = p.."natural", max = 30},
 		{name = p.."black", max = 30},
 		{name = p.."blue", max = 30},
@@ -347,7 +347,7 @@ lucky_block:add_blocks({
 p = "bakedclay:terracotta_"
 
 lucky_block:add_blocks({
-	{"nod", "default:chest", 0, {
+	{"nod", "chest:chest", 0, {
 		{name = p.."black", max = 20},
 		{name = p.."blue", max = 20},
 		{name = p.."brown", max = 20},
